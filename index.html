@@ -8,17 +8,20 @@
 </script>
 <script src="jquery.animate-colors.js">
 </script>
+<script src="jquery.leanModal.min.js">
+</script>
 <!-- Thanks to:
 http://stackoverflow.com/questions/2176861/javascript-get-clipboard-data-on-paste-event-cross-browser
 Google Webfonts
 Fontastic.me
+LeanModal.js http://leanmodal.finelysliced.com.au
  -->
 </head>
 <body>
 <script>
 jQuery(document).ready(function ($) {
     var togglebg = (function () {
-        var bgs = ['rgb(213, 174, 136)', 'white'];
+        var bgs = ['black', 'white'];
 
         return function () {
             document.body.style.backgroundColor = bgs[0];
@@ -31,7 +34,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
     var togglecolor = (function () {
-        var colors = ['rgb(117, 78, 40)', 'black'];
+        var colors = ['white', 'black'];
 
         return function () {
             document.body.style.color = colors[0];
@@ -127,12 +130,14 @@ $('#header[contenteditable]').on('paste',function(e) {
 function saveDocument() {
 var headersave = header.textContent;
 var bodytextsave = bodytext.textContent;
-var blob = new Blob([headersave +"\n"+ bodytextsave], {type: "text/plain;charset=utf-8"});
+var blob = new Blob([headersave +'\n'+ bodytextsave], {type: "text/plain;charset=utf-8"});
 saveAs(blob, "slight.txt");
 }
 function insertImage() {
-	var imagelink=prompt("What is your image URL?","www.website.com/image.png");
+	var imagelink = $('#imageurl').val();
 	var align="middle"
+	var caption="caption"
+	var editable="false"
 	document.getElementById("bodytext").innerHTML+= "<img src="+ imagelink +" alt="+ imagelink +" align="+ align +">"
 }
 getHeader();
@@ -144,7 +149,16 @@ getBodytext();
 </div>
 <div class="contrast" id="contrast">
 </div>
-<div class="twitter" onClick="twitterMessage('https://twitter.com/share?url=http%3A%2F%2Fslight.minteractive.io&text=Slight%20-%20a browser-based text editor');">
+<div class="twitter" onClick="twitterMessage('https://twitter.com/share?url=http%3A%2F%2F[determinethis.io]&text=Slight%20-%20a browser-based text editor by @mackeyguenther');">
 </div>
+<div class="picture"><a id="imagelink" href="#imagemodal"></a></div>
+<div id="imagemodal">
+What is the URL of your image?
+<input id="imageurl" placeholder="www.example.com/logo.png"/>
+<button onClick="insertImage();">Insert Image</button>
+</div>
+<script>
+$("#imagelink").leanModal();
+</script>
 </body>
 </html>
