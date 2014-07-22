@@ -1,29 +1,50 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100);
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500);
 p, h1{
 	outline:none;
 }
 
+p {
+	padding-bottom: 32px;
+}
 body {
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
-	font-family:'Roboto Slab';
+}
+
+.caption {
+	font-style:italic;
+	font-size:15px;
+	text-align:center;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+img {
+	max-width:550px;
+	margin:0 auto;
+	display:block;
 }
 
 #header {
 	font-size: 22px;
-	margin-top: 40px;	
+	margin-top: 40px;
 	margin-bottom: 23px;
-	font-family:'Roboto Slab';
-	font-weight:300;	
+	font-family:source-serif-pro;
+	font-weight:300;
 	text-align:center;
 	transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
 }
 
 #bodytext {
-	font-family:'Roboto Slab';
 	font-weight:300;
 	text-align:left;
 	width: 550px;
@@ -34,7 +55,7 @@ body {
 	transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
 }
- 
+
 @font-face {
   font-family: "slight";
   src:url("fonts/slight.eot");
@@ -45,10 +66,10 @@ body {
   font-weight: normal;
   font-style: normal;
 }
- 
+
 .twitter:before {
-   content: "t"; 
-} 
+   content: "t";
+}
 
 .twitter {
    position: fixed;
@@ -62,8 +83,8 @@ body {
 }
 
 .font:before {
-   content: "a"; 
-} 
+   content: "a";
+}
 
 .font {
    position: fixed;
@@ -76,8 +97,8 @@ body {
    -webkit-transition: all 300ms ease-in-out;
 }
 .download:before {
-   content: "d"; 
-} 
+   content: "d";
+}
 
 .download {
    position: fixed;
@@ -91,7 +112,7 @@ body {
 }
 
 .contrast:before {
-   content: "b"; 
+   content: "b";
 }
 
 .contrast{
