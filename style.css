@@ -2,6 +2,9 @@ p, h1{
 	outline:none;
 }
 
+p {
+	padding-bottom: 16px;
+}
 body {
     transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
