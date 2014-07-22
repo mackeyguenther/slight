@@ -4,9 +4,6 @@ Slight's an in-browser document editor. It saves content using local storage, so
 
 Slight uses the Source font family by Adobe, available *completely free* for web use at https://edgewebfonts.adobe.com!
 
-##Screenshots
-![Slight's UI]()
-
 ##Acknowledgements
 + [This](http://stackoverflow.com/questions/2176861/javascript-get-clipboard-data-on-paste-event-cross-browser) StackOverflow discussion
 + [Fontastic.me](http://fontastic.me) - my favorite icon font tool in all of the interwebs
