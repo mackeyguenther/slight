@@ -4,9 +4,7 @@
 <link rel="stylesheet" href="style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
-<script src="use.edgefonts.net/source-serif-pro.js">
-</script>
-<script src="use.edgefonts.net/source-sans-pro.js">
+<script src="use.edgefonts.net/source-serif-pro;source-sans-pro.js">
 </script>
 <script src="FileSaver.js">
 </script>
@@ -51,7 +49,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
     var togglefonts = (function () {
-        var fonts = ['Roboto Slab', 'Roboto'];
+        var fonts = ['source-serif-pro', 'source-sans-pro'];
 
         return function () {
             document.getElementById('header').style.fontFamily=fonts[1];
@@ -64,7 +62,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
     var togglefonts = (function () {
-        var fonts = ['Roboto Slab', 'Roboto'];
+        var fonts = ['source-serif-pro', 'source-sans-pro'];
 
         return function () {
             document.getElementById('bodytext').style.fontFamily=fonts[1];
@@ -153,7 +151,7 @@ getBodytext();
 </div>
 <div class="contrast" id="contrast">
 </div>
-<div class="twitter" onClick="twitterMessage('https://twitter.com/share?url=http%3A%2F%2F[determinethis.io]&text=Slight%20-%20a browser-based text editor by @mackeyguenther');">
+<div class="twitter" onClick="twitterMessage('https://twitter.com/share?text=Slight%20-%20a browser-based text editor by @mackeyguenther');">
 </div>
 <div class="picture"><a id="imagelink" href="#imagemodal"></a></div>
 <div id="imagemodal">
