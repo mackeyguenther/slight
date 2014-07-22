@@ -10,7 +10,8 @@
 </script>
 <script src="jquery.animate-colors.js">
 </script>
-<!-- Thanks to:
+<!--
+Thanks to:
 http://stackoverflow.com/questions/2176861/javascript-get-clipboard-data-on-paste-event-cross-browser
 Google Webfonts
 Fontastic.me
@@ -69,12 +70,6 @@ jQuery(document).ready(function ($) {
 
     $('#font').on('click', togglefonts);
 });
-
-function twitterMessage(url) {
-	newwindow=window.open(url,'name');
-	if (window.focus) {newwindow.focus()}
-	return false;
-}
 
 function saveDocument(){
 	var text = new Blob([header+ '\n' +bodytext], {type: "text/plain;charset=utf-8"});
@@ -140,8 +135,6 @@ getBodytext();
 <div class="font" id="font">
 </div>
 <div class="contrast" id="contrast">
-</div>
-<div class="twitter" onClick="twitterMessage('https://twitter.com/share?text=Slight%20-%20a browser-based text editor by @mackeyguenther');">
 </div>
 </body>
 </html>
