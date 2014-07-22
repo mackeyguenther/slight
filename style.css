@@ -30,7 +30,7 @@ img {
 	font-weight:300;
 	text-align:center;
 	transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
 }
 
 #bodytext {
@@ -42,7 +42,7 @@ img {
 	text-indent: 50px;
 	font-size:18px;
 	transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
 }
 
 @font-face {
