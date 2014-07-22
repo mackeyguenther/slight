@@ -1,0 +1,143 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500);
+p, h1{
+	outline:none;
+}
+
+body {
+    transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+	font-family:'Roboto Slab';
+}
+
+#header {
+	font-size: 22px;
+	margin-top: 40px;	
+	margin-bottom: 23px;
+	font-family:'Roboto Slab';
+	font-weight:300;	
+	text-align:center;
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+}
+
+#bodytext {
+	font-family:'Roboto Slab';
+	font-weight:300;
+	text-align:left;
+	width: 550px;
+	margin: 0 auto;
+	line-height: 30px;
+	text-indent: 50px;
+	font-size:18px;
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+}
+ 
+@font-face {
+  font-family: "slight";
+  src:url("fonts/slight.eot");
+  src:url("fonts/slight.eot?#iefix") format("embedded-opentype"),
+    url("fonts/slight.ttf") format("truetype"),
+    url("fonts/slight.svg#slight") format("svg"),
+    url("fonts/slight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+.twitter:before {
+   content: "t"; 
+} 
+
+.twitter {
+   position: fixed;
+   bottom:16px;
+   left:136px;
+   font-family:'slight';
+   font-size:28px;
+   line-height: 1;
+   transition: all 500ms ease-in-out;
+   -webkit-transition: all 500ms ease-in-out;
+}
+
+.font:before {
+   content: "a"; 
+} 
+
+.font {
+   position: fixed;
+   bottom:16px;
+   left:16px;
+   font-family:'slight';
+   font-size:28px;
+   line-height: 1;
+   transition: all 300ms ease-in-out;
+   -webkit-transition: all 300ms ease-in-out;
+}
+.download:before {
+   content: "d"; 
+} 
+
+.download {
+   position: fixed;
+   bottom:16px;
+   left:96px;
+   font-family:'slight';
+   font-size:28px;
+   line-height: 1;
+   transition: all 300ms ease-in-out;
+   -webkit-transition: all 300ms ease-in-out;
+}
+
+.contrast:before {
+   content: "b"; 
+}
+
+.contrast{
+   position: fixed;
+   bottom:16px;
+   left:56px;
+   font-family:'slight';
+   font-size:28px;
+   line-height: 1;
+   	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+}
+
+.twitter:hover {
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+	color:#55acee;
+	cursor: pointer;
+}
+
+.download:hover {
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+	color:#747474;
+	cursor:pointer;
+}
+
+.contrast:hover {
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+	color:#747474;
+	cursor:pointer;
+}
+
+.font:hover {
+	transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+	color:#747474;
+	cursor:pointer;
+}
+@media (max-width: 500px) {
+    #bodytext { font-size: 18px; width: 300px; padding-top: 10px;}
+    #header {font-size: 26px; margin-top: 25px;}
+}
+
+@media (max-width: 300px) {
+    #bodytext {max-width: 100%;}
+    #header {max-width: 100%;}
+}
