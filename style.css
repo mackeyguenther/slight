@@ -3,7 +3,7 @@ p, h1{
 }
 
 p {
-	padding-bottom: 16px;
+	padding-bottom: 32px;
 }
 body {
     transition: all 300ms ease-in-out;
