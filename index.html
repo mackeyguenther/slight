@@ -10,8 +10,6 @@
 </script>
 <script src="jquery.animate-colors.js">
 </script>
-<script src="jquery.leanModal.min.js">
-</script>
 <!-- Thanks to:
 http://stackoverflow.com/questions/2176861/javascript-get-clipboard-data-on-paste-event-cross-browser
 Google Webfonts
@@ -135,13 +133,6 @@ var bodytextsave = bodytext.textContent;
 var blob = new Blob([headersave +'\n'+ bodytextsave], {type: "text/plain;charset=utf-8"});
 saveAs(blob, "slight.txt");
 }
-function insertImage() {
-	var imagelink = $('#imageurl').val();
-	var align="middle"
-	var caption="caption"
-	var editable="false"
-	document.getElementById("bodytext").innerHTML+= "<img src="+ imagelink +" alt="+ imagelink +" align="+ align +">"
-}
 getHeader();
 getBodytext();
 </script>
@@ -153,14 +144,5 @@ getBodytext();
 </div>
 <div class="twitter" onClick="twitterMessage('https://twitter.com/share?text=Slight%20-%20a browser-based text editor by @mackeyguenther');">
 </div>
-<div class="picture"><a id="imagelink" href="#imagemodal"></a></div>
-<div id="imagemodal">
-What is the URL of your image?
-<input id="imageurl" placeholder="www.example.com/logo.png"/>
-<button onClick="insertImage();">Insert Image</button>
-</div>
-<script>
-$("#imagelink").leanModal();
-</script>
 </body>
 </html>

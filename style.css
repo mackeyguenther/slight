@@ -151,21 +151,6 @@ img {
     -webkit-transition: all 300ms ease-in-out;
 }
 
-.picture:before {
-   content: "p";
-}
-
-.picture{
-   position: fixed;
-   bottom:16px;
-   left:176px;
-   font-family:'slight';
-   font-size:28px;
-   line-height: 1;
-   	transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-}
-
 .twitter:hover {
 	transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
@@ -181,13 +166,6 @@ img {
 }
 
 .contrast:hover {
-	transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-	color:#747474;
-	cursor:pointer;
-}
-
-.picture:hover {
 	transition: all 300ms ease-in-out;
     -webkit-transition: all 300ms ease-in-out;
 	color:#747474;
