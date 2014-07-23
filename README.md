@@ -9,5 +9,7 @@ Slight uses the Source font family by Adobe, available *completely free* for web
 ##Acknowledgements
 + [This](http://stackoverflow.com/questions/2176861/javascript-get-clipboard-data-on-paste-event-cross-browser) StackOverflow discussion
 + [Fontastic.me](http://fontastic.me) - my favorite icon font tool in all of the interwebs
++ [This](http://www.bitstorm.org/jquery/color-animation/) jQuery color animation plugin by Edwin Martin
++ [FileSaver.js](https://github.com/eligrey/FileSaver.js) by Eli Grey
 
 
