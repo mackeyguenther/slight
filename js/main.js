@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     $('#contrast').on('click', togglecolor);
 });
 
-//Change font in header 
+//Change font in header
 jQuery(document).ready(function ($) {
     var togglefonts = (function () {
         var fonts = ['source-serif-pro', 'source-sans-pro'];
@@ -109,23 +109,13 @@ $('#header[contenteditable]').on('paste', function (e) {
     document.execCommand('insertText', false, text);
 });
 
-/*function saveDocument() {
+function saveDocument() {
     var headersave = header.textContent;
     var bodytextsave = bodytext.textContent;
     var blob = new Blob([headersave + '\n' + bodytextsave], {
         type: "text/plain;charset=utf-8"
     });
     saveAs(blob, "slight.txt");
-}*/
-
-document.getElementById('download').onclick = function () {
-    header = document.getElementById('header').innerHTML;
-    bodytext = document.getElementById('bodytext').innerHTML;
-    var blob = new Blob([header + '\n' + bodytext], {
-        type: "text/plain;charset=utf-8"
-    });
-    saveAs(blob, "slight.txt");
-};
 
 getHeader();
 getBodytext();
