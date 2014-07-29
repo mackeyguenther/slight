@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
+<<<<<<< HEAD
 <body>
     <h1 contenteditable="true" id="header">My Great Document</h1>
     <p contenteditable="true" id="bodytext">
@@ -24,6 +25,83 @@
     <script src="js/FileSaver.js"></script>
     <script src="js/jquery.animate-colors.js"></script>
     <script src="js/main.js"></script>
+=======
+jQuery(document).ready(function ($) {
+    var togglefonts = (function () {
+        var fonts = ['source-serif-pro', 'source-sans-pro'];
+
+        return function () {
+            document.getElementById('bodytext').style.fontFamily=fonts[1];
+            fonts.push(fonts.shift());
+        }
+    })();
+
+    $('#font').on('click', togglefonts);
+});
+
+function saveDocument(){
+	var text = new Blob([header+ '\n' +bodytext], {type: "text/plain;charset=utf-8"});
+    saveAs(text, "slight.txt");
+}
+function storeHeader(id) {
+    var header = document.getElementById('header').innerHTML;
+    localStorage.setItem('header',header);
+  }
+
+  function getHeader() {
+    if ( localStorage.getItem('header')) {
+      var header = localStorage.getItem('header');
+    }
+    else {
+      var header = 'My Great Document';
+    }
+    document.getElementById('header').innerHTML = header;
+  }
+  function storeBodytext(id) {
+    var bodytext = document.getElementById('bodytext').innerHTML;
+    localStorage.setItem('bodytext',bodytext);
+  }
+
+  function getBodytext() {
+    if ( localStorage.getItem('bodytext')) {
+      var bodytext = localStorage.getItem('bodytext');
+    }
+    else {
+      var bodytext = 'Your text here. Delete me to get started!';
+    }
+    document.getElementById('bodytext').innerHTML = bodytext;
+  }
+</script>
+<h1 contenteditable="true" id="header" onkeyup="storeHeader(this.id);">My Great Document</h1>
+<p contenteditable="true" id="bodytext" onkeyup="storeBodytext(this.id);">
+Your text here. Delete me to get started!
+</p>
+<script>
+$('#bodytext[contenteditable]').on('paste',function(e) {
+    e.preventDefault();
+    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
+    document.execCommand('insertText', false, text);
+});
+
+$('#header[contenteditable]').on('paste',function(e) {
+    e.preventDefault();
+    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('My Great Document');
+    document.execCommand('insertText', false, text);
+});
+
+function saveDocument() {
+var headersave = header.textContent;
+var bodytextsave = bodytext.textContent;
+var blob = new Blob([headersave +'\n'+ bodytextsave], {type: "text/plain;charset=utf-8"});
+saveAs(blob, "slight.txt");
+}
+getHeader();
+getBodytext();
+</script>
+<button class="download" onClick="saveDocument();"></div>
+<button class="font" id="font"></div>
+<button class="contrast" id="contrast"></button>
+>>>>>>> pr/2
 </body>
 
 </html>
