@@ -1,134 +1,29 @@
 <!DOCTYPE html>
+<html>
+
 <head>
-<title>Slight - simplistic writing</title>
-<link rel="stylesheet" href="style.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
-</script>
-<script src="http://use.edgefonts.net/source-serif-pro;source-sans-pro.js">
-</script>
-<script src="FileSaver.js">
-</script>
-<script src="jquery.animate-colors.js">
-</script>
+    <title>Slight - simplistic writing</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-<script>
-jQuery(document).ready(function ($) {
-    var togglebg = (function () {
-        var bgs = ['black', 'white'];
-
-        return function () {
-            document.body.style.backgroundColor = bgs[0];
-            bgs.push(bgs.shift());
-        }
-    })();
-
-    $('#contrast').on('click', togglebg);
-});
-
-jQuery(document).ready(function ($) {
-    var togglecolor = (function () {
-        var colors = ['white', 'black'];
-
-        return function () {
-            document.body.style.color = colors[0];
-            colors.push(colors.shift());
-        }
-    })();
-
-    $('#contrast').on('click', togglecolor);
-});
-
-jQuery(document).ready(function ($) {
-    var togglefonts = (function () {
-        var fonts = ['source-serif-pro', 'source-sans-pro'];
-
-        return function () {
-            document.getElementById('header').style.fontFamily=fonts[1];
-            fonts.push(fonts.shift());
-        }
-    })();
-
-    $('#font').on('click', togglefonts);
-});
-
-jQuery(document).ready(function ($) {
-    var togglefonts = (function () {
-        var fonts = ['source-serif-pro', 'source-sans-pro'];
-
-        return function () {
-            document.getElementById('bodytext').style.fontFamily=fonts[1];
-            fonts.push(fonts.shift());
-        }
-    })();
-
-    $('#font').on('click', togglefonts);
-});
-
-function saveDocument(){
-	var text = new Blob([header+ '\n' +bodytext], {type: "text/plain;charset=utf-8"});
-    saveAs(text, "slight.txt");
-}
-function storeHeader(id) {
-    var header = document.getElementById('header').innerHTML;
-    localStorage.setItem('header',header);
-  }
-
-  function getHeader() {
-    if ( localStorage.getItem('header')) {
-      var header = localStorage.getItem('header');
-    }
-    else {
-      var header = 'My Great Document';
-    }
-    document.getElementById('header').innerHTML = header;
-  }
-  function storeBodytext(id) {
-    var bodytext = document.getElementById('bodytext').innerHTML;
-    localStorage.setItem('bodytext',bodytext);
-  }
-
-  function getBodytext() {
-    if ( localStorage.getItem('bodytext')) {
-      var bodytext = localStorage.getItem('bodytext');
-    }
-    else {
-      var bodytext = 'Your text here. Delete me to get started!';
-    }
-    document.getElementById('bodytext').innerHTML = bodytext;
-  }
-</script>
-<h1 contenteditable="true" id="header" onkeyup="storeHeader(this.id);">My Great Document</h1>
-<p contenteditable="true" id="bodytext" onkeyup="storeBodytext(this.id);">
-Your text here. Delete me to get started!
-</p>
-<script>
-$('#bodytext[contenteditable]').on('paste',function(e) {
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
-    document.execCommand('insertText', false, text);
-});
-
-$('#header[contenteditable]').on('paste',function(e) {
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('My Great Document');
-    document.execCommand('insertText', false, text);
-});
-
-function saveDocument() {
-var headersave = header.textContent;
-var bodytextsave = bodytext.textContent;
-var blob = new Blob([headersave +'\n'+ bodytextsave], {type: "text/plain;charset=utf-8"});
-saveAs(blob, "slight.txt");
-}
-getHeader();
-getBodytext();
-</script>
-<div class="download" onClick="saveDocument();">
-</div>
-<div class="font" id="font">
-</div>
-<div class="contrast" id="contrast">
-</div>
+    <h1 contenteditable="true" id="header">My Great Document</h1>
+    <p contenteditable="true" id="bodytext">
+        Your text here. Delete me to get started!
+    </p>
+    <div class="download" id="download">
+    </div>
+    <div class="font" id="font">
+    </div>
+    <div class="contrast" id="contrast">
+    </div>
+    
+    <!-- Scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://use.edgefonts.net/source-serif-pro;source-sans-pro.js"></script>
+    <script src="js/FileSaver.js"></script>
+    <script src="js/jquery.animate-colors.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

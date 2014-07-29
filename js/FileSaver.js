@@ -13,6 +13,9 @@
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
+//Get JSHint to stop yelling
+var module, navigator, window;
+
 var saveAs = saveAs
   || (typeof navigator !== 'undefined' && navigator.msSaveOrOpenBlob && navigator.msSaveOrOpenBlob.bind(navigator))
   || (function(view) {
