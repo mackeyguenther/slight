@@ -2,6 +2,12 @@ p, h1{
 	outline:none;
 }
 
+button {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+}
+
 p {
 	padding-bottom: 32px;
 }
@@ -48,11 +54,11 @@ img {
 
 @font-face {
   font-family: "slight";
-  src:url("fonts/slight.eot");
-  src:url("fonts/slight.eot?#iefix") format("embedded-opentype"),
-    url("fonts/slight.ttf") format("truetype"),
-    url("fonts/slight.svg#slight") format("svg"),
-    url("fonts/slight.woff") format("woff");
+  src:url("../fonts/slight.eot");
+  src:url("../fonts/slight.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/slight.ttf") format("truetype"),
+    url("../fonts/slight.svg#slight") format("svg"),
+    url("../fonts/slight.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
