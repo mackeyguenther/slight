@@ -109,10 +109,10 @@ $('#header[contenteditable]').on('paste', function (e) {
     document.execCommand('insertText', false, text);
 });
 
-function saveDocument() {
-    var headersave = header.textContent;
-    var bodytextsave = bodytext.textContent;
-    var blob = new Blob([headersave + '\n' + bodytextsave], {
+document.getElementById('download').onclick = function () {
+    header = document.getElementById('header').innerHTML;
+    bodytext = document.getElementById('bodytext').innerHTML;
+    var blob = new Blob([header + '\n' + bodytext], {
         type: "text/plain;charset=utf-8"
     });
     saveAs(blob, "slight.txt");
