@@ -2,6 +2,12 @@ p, h1{
 	outline:none;
 }
 
+button {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+}
+
 p {
 	padding-bottom: 32px;
 }
