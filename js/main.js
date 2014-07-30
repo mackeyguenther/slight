@@ -1,6 +1,3 @@
-//Declare vars
-var document, jQuery, $, header, bodytext, saveAs, localStorage, prompt, Blob;
-
 $(function(){
     var doc = document;
     var win = window;
@@ -14,6 +11,7 @@ $(function(){
 
     var $contrastBtn = $('#contrast');
     var $fontBtn = $('#font');
+    var $downloadBtn = $('#download');
     var $contentEditable = $('[contenteditable]');
 
     var Storage = {
@@ -43,6 +41,15 @@ $(function(){
 
     $fontBtn.on('click', toggleFonts);
 
+    $downloadBtn.on('click', function(){
+        var headerContent = Storage.get('headerContent');
+        var bodyContent = Storage.get('bodyContent');
+        var blob = new Blob([headerContent + '\n' + bodyContent], {
+            type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, "slight.txt");
+    });
+
     $contentEditable
         .each(function(i, el){
             var $this = $(el);
@@ -67,13 +74,3 @@ $(function(){
         });
 
 });
-
-
-document.getElementById('download').onclick = function () {
-    header = document.getElementById('header').innerHTML;
-    bodytext = document.getElementById('bodytext').innerHTML;
-    var blob = new Blob([header + '\n' + bodytext], {
-        type: "text/plain;charset=utf-8"
-    });
-    saveAs(blob, "slight.txt");
-};
