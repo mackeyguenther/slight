@@ -1,60 +1,38 @@
 //Declare vars
 var document, jQuery, $, header, bodytext, saveAs, localStorage, prompt, Blob;
 
-//Change background
-jQuery(document).ready(function ($) {
-    var togglebg = (function () {
-        var bgs = ['black', 'white'];
+$(function(){
+    var doc = document;
+    var body = doc.body;
+    var colors = ['black', 'white'];
+    var fonts = ['source-serif-pro', 'source-sans-pro'];
 
-        return function () {
-            document.body.style.backgroundColor = bgs[0];
-            bgs.push(bgs.shift());
-        };
-    })();
+    var $contrastBtn = $('#contrast');
+    var $fontBtn = $('#font');
+    var $contentEditable = $('[contenteditable]');
 
-    $('#contrast').on('click', togglebg);
-});
+    var toggleColors = function(){
+        body.style.backgroundColor = colors[0];
+        body.style.color = colors[1];
+        colors.reverse();
+    };
+    var toggleFonts = function(){
+        $contentEditable.css('fontFamily', fonts[1]);
+        fonts.reverse();
+    };
 
-//Change font color
-jQuery(document).ready(function ($) {
-    var togglecolor = (function () {
-        var colors = ['white', 'black'];
 
-        return function () {
-            document.body.style.color = colors[0];
-            colors.push(colors.shift());
-        };
-    })();
+    $contrastBtn.on('click', toggleColors);
 
-    $('#contrast').on('click', togglecolor);
-});
+    $fontBtn.on('click', toggleFonts);
 
-//Change font in header
-jQuery(document).ready(function ($) {
-    var togglefonts = (function () {
-        var fonts = ['source-serif-pro', 'source-sans-pro'];
+    $contentEditable.on('paste', function (e) {
+        e.preventDefault();
+        var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
+        console.log(text);
+        document.execCommand('insertText', false, text);
+    });
 
-        return function () {
-            document.getElementById('header').style.fontFamily = fonts[1];
-            fonts.push(fonts.shift());
-        };
-    })();
-
-    $('#font').on('click', togglefonts);
-});
-
-//Change font in body
-jQuery(document).ready(function ($) {
-    var togglefonts = (function () {
-        var fonts = ['source-serif-pro', 'source-sans-pro'];
-
-        return function () {
-            document.getElementById('bodytext').style.fontFamily = fonts[1];
-            fonts.push(fonts.shift());
-        };
-    })();
-
-    $('#font').on('click', togglefonts);
 });
 
 /*function storeHeader(id) {
@@ -96,18 +74,6 @@ function getBodytext() {
     }
     document.getElementById('bodytext').innerHTML = bodytext;
 }
-
-$('#bodytext[contenteditable]').on('paste', function (e) {
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
-    document.execCommand('insertText', false, text);
-});
-
-$('#header[contenteditable]').on('paste', function (e) {
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('My Great Document');
-    document.execCommand('insertText', false, text);
-});
 
 document.getElementById('download').onclick = function () {
     header = document.getElementById('header').innerHTML;
