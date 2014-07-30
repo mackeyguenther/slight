@@ -3,13 +3,30 @@ var document, jQuery, $, header, bodytext, saveAs, localStorage, prompt, Blob;
 
 $(function(){
     var doc = document;
+    var win = window;
     var body = doc.body;
-    var colors = ['black', 'white'];
     var fonts = ['source-serif-pro', 'source-sans-pro'];
+    var colors = ['black', 'white'];
+    var defaultTexts = {
+        headerContent: 'My Great Document',
+        bodyContent: 'Your text here. Delete me to get started!'
+    };
 
     var $contrastBtn = $('#contrast');
     var $fontBtn = $('#font');
     var $contentEditable = $('[contenteditable]');
+
+    var Storage = {
+        get: function(val, cb){
+            var val = win.localStorage.getItem(val);
+            if(cb) cb();
+            return val;
+        },
+        set: function(key, val, cb){
+            win.localStorage.setItem(key, val);
+            if(cb) cb();
+        }
+    };
 
     var toggleColors = function(){
         body.style.backgroundColor = colors[0];
@@ -26,54 +43,31 @@ $(function(){
 
     $fontBtn.on('click', toggleFonts);
 
-    $contentEditable.on('paste', function (e) {
-        e.preventDefault();
-        var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
-        console.log(text);
-        document.execCommand('insertText', false, text);
-    });
+    $contentEditable
+        .each(function(i, el){
+            var $this = $(el);
+            var scope = $this.attr('data-scope');
+            var storageContent = Storage.get(scope);
+            var content = storageContent || defaultTexts[scope];
+
+            $this.html(content);
+        })
+        .on('paste', function (e) {
+            e.preventDefault();
+            var text = (e.originalEvent || e).clipboardData.getData('text/plain') || prompt('Your text here! Delete me to get started.');
+            console.log(text);
+            document.execCommand('insertText', false, text);
+        })
+        .on('keyup', function(){
+            var $this = $(this);
+            var scope = $this.attr('data-scope');
+            var content = $this.html();
+
+            Storage.set(scope, content);
+        });
 
 });
 
-/*function storeHeader(id) {
-    var header = document.getElementById('header').innerHTML;
-    localStorage.setItem('header', header);
-}*/
-
-document.getElementById('header').onkeyup = function () {
-    var header = document.getElementById('header').innerHTML;
-    localStorage.setItem('header', header);
-};
-
-function getHeader() {
-    var header;
-    if (localStorage.getItem('header')) {
-        header = localStorage.getItem('header');
-    } else {
-        header = 'My Great Document';
-    }
-    document.getElementById('header').innerHTML = header;
-}
-
-/*function storeBodytext(id) {
-    var bodytext = document.getElementById('bodytext').innerHTML;
-    localStorage.setItem('bodytext', bodytext);
-}*/
-
-document.getElementById('bodytext').onkeyup = function () {
-    var bodytext = document.getElementById('bodytext').innerHTML;
-    localStorage.setItem('bodytext', bodytext);
-};
-
-function getBodytext() {
-    var bodytext;
-    if (localStorage.getItem('bodytext')) {
-        bodytext = localStorage.getItem('bodytext');
-    } else {
-        bodytext = 'Your text here. Delete me to get started!';
-    }
-    document.getElementById('bodytext').innerHTML = bodytext;
-}
 
 document.getElementById('download').onclick = function () {
     header = document.getElementById('header').innerHTML;
@@ -83,6 +77,3 @@ document.getElementById('download').onclick = function () {
     });
     saveAs(blob, "slight.txt");
 };
-
-getHeader();
-getBodytext();
