@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <title>Slight - simplistic writing</title>
+    <title>Slight - Simplistic writing</title>
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <h1 contenteditable="true" data-scope="headerContent" id="header">My Great Document</h1>
-    <p contenteditable="true" data-scope="bodyContent" id="bodytext">
-        Your text here. Delete me to get started!
-    </p>
-<div class="download" id="download"></div>
-<div class="font" id="font"></div>
-<div class="contrast" id="contrast"></div>
+    <p contenteditable="true" data-scope="bodyContent" id="bodytext"></p>
+
+    <!-- Action buttons -->
+    <div class="action-btn action-btn--download-content js-download-content"></div>
+    <div class="action-btn action-btn--toggle-font js-toggle-fonts"></div>
+    <div class="action-btn action-btn--toggle-contrast js-toggle-contrast"></div>
+    
     <!-- Scripts -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://use.edgefonts.net/source-serif-pro;source-sans-pro.js"></script>
