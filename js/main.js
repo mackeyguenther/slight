@@ -9,10 +9,10 @@ $(function(){
         bodyContent: 'Your text here. Delete me to get started!'
     };
 
-    var $contrastBtn = $('#contrast');
-    var $fontBtn = $('#font');
-    var $downloadBtn = $('#download');
     var $contentEditable = $('[contenteditable]');
+    var $btnToggleContrast = $('.js-toggle-contrast');
+    var $btnToggleFonts = $('.js-toggle-fonts');
+    var $btnDownload = $('.js-download-content');
 
     var Storage = {
         get: function(val, cb){
@@ -37,11 +37,11 @@ $(function(){
     };
 
 
-    $contrastBtn.on('click', toggleColors);
+    $btnToggleContrast.on('click', toggleColors);
 
-    $fontBtn.on('click', toggleFonts);
+    $btnToggleFonts.on('click', toggleFonts);
 
-    $downloadBtn.on('click', function(){
+    $btnDownload.on('click', function(){
         var headerContent = Storage.get('headerContent');
         var bodyContent = Storage.get('bodyContent');
         var blob = new Blob([headerContent + '\n' + bodyContent], {
