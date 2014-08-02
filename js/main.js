@@ -1,4 +1,4 @@
-$(function(){
+$(function () {
     var doc = document;
     var win = window;
     var body = doc.body;
@@ -15,25 +15,31 @@ $(function(){
     var $btnDownload = $('.js-download-content');
 
     var Storage = {
-        get: function(val, cb){
+        get: function (val, cb) {
             var val = win.localStorage.getItem(val);
-            if(cb) cb();
+            if (cb) cb();
             return val;
         },
-        set: function(key, val, cb){
+        set: function (key, val, cb) {
             win.localStorage.setItem(key, val);
-            if(cb) cb();
+            if (cb) cb();
         }
     };
 
-    var toggleColors = function(){
+    var toggleColors = function () {
         body.style.backgroundColor = colors[0];
         body.style.color = colors[1];
         colors.reverse();
+        //session
+        localStorage.setItem('colors', JSON.stringify({'bg': colors[1], 'text': colors[0]}));
+        
     };
-    var toggleFonts = function(){
+    
+    var toggleFonts = function () {
         $contentEditable.css('fontFamily', fonts[1]);
         fonts.reverse();
+        //session
+        localStorage.setItem('font', fonts[0]);
     };
 
 
@@ -41,7 +47,7 @@ $(function(){
 
     $btnToggleFonts.on('click', toggleFonts);
 
-    $btnDownload.on('click', function(){
+    $btnDownload.on('click', function () {
         var headerContent = Storage.get('headerContent');
         var bodyContent = Storage.get('bodyContent');
         var blob = new Blob([headerContent + '\n' + bodyContent], {
@@ -51,7 +57,7 @@ $(function(){
     });
 
     $contentEditable
-        .each(function(i, el){
+        .each(function (i, el) {
             var $this = $(el);
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
@@ -65,12 +71,28 @@ $(function(){
             console.log(text);
             document.execCommand('insertText', false, text);
         })
-        .on('keyup', function(){
+        .on('keyup', function () {
             var $this = $(this);
             var scope = $this.attr('data-scope');
             var content = $this.html();
 
             Storage.set(scope, content);
         });
+    
+    // Local Storage
+    if(localStorage != null){
+        //Font
+        $contentEditable.css('fontFamily', localStorage.getItem('font'));
+        //Contrast
+        var color = JSON.parse(localStorage.getItem('colors'));
+        body.style.backgroundColor = color.bg;
+        body.style.color = color.text;
+    }
+    else{
+        //Font
+        localStorage.setItem('font', 'source-serif-pro');
+        //Contrast
+        localStorage.setItem('colors', JSON.stringify({'bg': 'white', 'text': 'black'}));
+    }
 
 });
