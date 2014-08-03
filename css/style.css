@@ -62,7 +62,7 @@
         font-size: 18px;
         line-height: 30px;
         font-weight: 300;
-        font-family:source-serif-pro;
+        font-family: source-serif-pro, serif;
         text-align: left;
         text-indent: 50px;
         -webkit-transition: all 300ms ease-in-out;
