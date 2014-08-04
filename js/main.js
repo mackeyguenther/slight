@@ -26,15 +26,21 @@ $(function () {
         }
     };
 
+    function htmlEntities(str) { //replaces certain special characters (<, >, & and ")
+        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+    }
+
     var toggleColors = function () {
         body.style.backgroundColor = colors[0];
         body.style.color = colors[1];
         colors.reverse();
         //session
-        Storage.set('colors', JSON.stringify({'bg': colors[1], 'text': colors[0]}));
-        
+        Storage.set('colors', JSON.stringify({
+            'bg': colors[1],
+            'text': colors[0]
+        }));
     };
-    
+
     var toggleFonts = function () {
         $contentEditable.css('fontFamily', fonts[1]);
         fonts.reverse();
@@ -48,8 +54,8 @@ $(function () {
     $btnToggleFonts.on('click', toggleFonts);
 
     $btnDownload.on('click', function () {
-        var headerContent = Storage.get('headerContent');
-        var bodyContent = Storage.get('bodyContent');
+        var headerContent = htmlEntities(Storage.get('headerContent'));
+        var bodyContent = htmlEntities(Storage.get('bodyContent'));
         var blob = new Blob([headerContent + '\n' + bodyContent], {
             type: "text/plain;charset=utf-8"
         });
@@ -78,17 +84,18 @@ $(function () {
 
             Storage.set(scope, content);
         });
-    
+
     // Local Storage
-    if(Storage.get('font') === null){
+    if (Storage.get('font') === null) {
         //Font
         Storage.set('font', 'source-serif-pro');
-    }
-    else if(Storage.get('colors') === null){
-         //Contrast
-        Storage.set('colors', JSON.stringify({'bg': 'white', 'text': 'black'}));  
-    }
-    else{
+    } else if (Storage.get('colors') === null) {
+        //Contrast
+        Storage.set('colors', JSON.stringify({
+            'bg': 'white',
+            'text': 'black'
+        }));
+    } else {
         //Font
         $contentEditable.css('fontFamily', Storage.get('font'));
         //Contrast
@@ -96,6 +103,6 @@ $(function () {
         body.style.backgroundColor = color.bg;
         body.style.color = color.text;
     }
-  
+
 
 });

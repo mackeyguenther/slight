@@ -11,5 +11,6 @@ Slight uses the Source font family by Adobe, available *completely free* for web
 + [Fontastic.me](http://fontastic.me) - my favorite icon font tool in all of the interwebs
 + [This](http://www.bitstorm.org/jquery/color-animation/) jQuery color animation plugin by Edwin Martin
 + [FileSaver.js](https://github.com/eligrey/FileSaver.js) by Eli Grey
++ [This](http://css-tricks.com/snippets/javascript/htmlentities-for-javascript/) htmlEntities for JavaScript on CSS-Tricks
 
 
