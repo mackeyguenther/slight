@@ -31,7 +31,7 @@ $(function () {
         body.style.color = colors[1];
         colors.reverse();
         //session
-        localStorage.setItem('colors', JSON.stringify({'bg': colors[1], 'text': colors[0]}));
+        Storage.set('colors', JSON.stringify({'bg': colors[1], 'text': colors[0]}));
         
     };
     
@@ -39,7 +39,7 @@ $(function () {
         $contentEditable.css('fontFamily', fonts[1]);
         fonts.reverse();
         //session
-        localStorage.setItem('font', fonts[0]);
+        Storage.set('font', fonts[0]);
     };
 
 
@@ -80,19 +80,22 @@ $(function () {
         });
     
     // Local Storage
-    if(localStorage != null){
+    if(Storage.get('font') === null){
         //Font
-        $contentEditable.css('fontFamily', localStorage.getItem('font'));
-        //Contrast
-        var color = JSON.parse(localStorage.getItem('colors'));
-        body.style.backgroundColor = color.bg;
-        body.style.color = color.text;
+        Storage.set('font', 'source-serif-pro');
+    }
+    else if(Storage.get('colors') === null){
+         //Contrast
+        Storage.set('colors', JSON.stringify({'bg': 'white', 'text': 'black'}));  
     }
     else{
         //Font
-        localStorage.setItem('font', 'source-serif-pro');
+        $contentEditable.css('fontFamily', Storage.get('font'));
         //Contrast
-        localStorage.setItem('colors', JSON.stringify({'bg': 'white', 'text': 'black'}));
+        var color = JSON.parse(Storage.get('colors'));
+        body.style.backgroundColor = color.bg;
+        body.style.color = color.text;
     }
+  
 
 });
