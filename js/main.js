@@ -18,7 +18,7 @@ $(function () {
         get: function (val, cb) {
             var val = win.localStorage.getItem(val);
             if (cb) cb();
-            return val;
+            return htmlEntities(val);
         },
         set: function (key, val, cb) {
             win.localStorage.setItem(key, val);
@@ -26,9 +26,10 @@ $(function () {
         }
     };
 
-    function htmlEntities(str) { //replaces certain special characters (<, >, & and ")
+    var htmlEntities = function (str) {
+        //replaces certain special characters (<, >, & and ")
         return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
-    }
+    };
 
     var toggleColors = function () {
         body.style.backgroundColor = colors[0];
@@ -54,8 +55,8 @@ $(function () {
     $btnToggleFonts.on('click', toggleFonts);
 
     $btnDownload.on('click', function () {
-        var headerContent = htmlEntities(Storage.get('headerContent'));
-        var bodyContent = htmlEntities(Storage.get('bodyContent'));
+        var headerContent = Storage.get('headerContent');
+        var bodyContent = Storage.get('bodyContent');
         var blob = new Blob([headerContent + '\n' + bodyContent], {
             type: "text/plain;charset=utf-8"
         });
@@ -103,6 +104,5 @@ $(function () {
         body.style.backgroundColor = color.bg;
         body.style.color = color.text;
     }
-
 
 });
