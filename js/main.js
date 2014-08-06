@@ -71,8 +71,8 @@ $(function () {
     $btnToggleFonts.on('click', toggleFonts);
 
     $btnDownload.on('click', function () {
-        var headerContent = codeEnhancement(Storage.get('headerContent'));
-        var bodyContent = codeEnhancement(Storage.get('bodyContent'));
+        var headerContent = codeEnhancement(Storage.get('headerContent'), "title");
+        var bodyContent = codeEnhancement(Storage.get('bodyContent'), "body");
         var blob = new Blob([headerContent + '\n' + bodyContent], {
             type: "text/plain;charset=utf-8"
         });
