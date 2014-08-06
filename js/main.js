@@ -84,7 +84,7 @@ $(function () {
             var $this = $(el);
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
-            var content = (storageContent != null && storageContent != "null") || defaultTexts[scope];
+            var content = (storageContent != null && storageContent != "null") ? storageContent : defaultTexts[scope];
 
             $this.html(content);
         })
