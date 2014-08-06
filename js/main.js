@@ -1,18 +1,23 @@
 $(function () {
     var doc = document;
     var win = window;
-    var body = doc.body;
-    var fonts = ['source-serif-pro', 'source-sans-pro'];
-    var colors = ['black', 'white'];
+    var fonts = ['sans-serif', 'serif'];
+    var colors = ['darker', 'lighter'];
     var defaultTexts = {
         headerContent: 'My Great Document',
         bodyContent: 'Your text here. Delete me to get started!'
     };
 
+    var $body = $('body');
     var $contentEditable = $('[contenteditable]');
     var $btnToggleContrast = $('.js-toggle-contrast');
     var $btnToggleFonts = $('.js-toggle-fonts');
     var $btnDownload = $('.js-download-content');
+
+    var htmlEntities = function (str) {
+        //replaces certain special characters (<, >, & and ")
+        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+    };
 
     var Storage = {
         get: function (val, cb) {
@@ -26,27 +31,42 @@ $(function () {
         }
     };
 
-    var htmlEntities = function (str) {
-        //replaces certain special characters (<, >, & and ")
-        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+    var toggleColors = function (evt, val) {
+        // evt is automatically send when doing
+        // $btnToggleContrast.on('click', toggleColors);
+
+        // if a specific color is send, apply it
+        // else, juste toggle
+
+        var newColor = val ? val : colors[0];
+
+        // tricky part
+        if (!val || val === colors[0]){
+            colors.reverse();
+        }
+
+        Storage.set('color', newColor, function(){
+            $body.attr('data-color', newColor);
+        });
     };
 
-    var toggleColors = function () {
-        body.style.backgroundColor = colors[0];
-        body.style.color = colors[1];
-        colors.reverse();
-        //session
-        Storage.set('colors', JSON.stringify({
-            'bg': colors[1],
-            'text': colors[0]
-        }));
-    };
+    var toggleFonts = function (evt, val) {
+        // evt is automatically send when doing
+        // $btnToggleFonts.on('click', toggleFonts);
 
-    var toggleFonts = function () {
-        $contentEditable.css('fontFamily', fonts[1]);
-        fonts.reverse();
-        //session
-        Storage.set('font', fonts[0]);
+        // if a specific font is send, apply it
+        // else, juste toggle
+
+        var newFont = val ? val : fonts[0];
+
+        // tricky part
+        if (!val || val === fonts[0]){
+            fonts.reverse();
+        }
+
+        Storage.set('font', newFont, function(){
+            $body.attr('data-font', newFont);
+        });
     };
 
     /*
@@ -84,7 +104,7 @@ $(function () {
             var $this = $(el);
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
-            var content = (storageContent != null && storageContent != "null") ? storageContent : defaultTexts[scope];
+            var content = storageContent == 'null' ? defaultTexts[scope] : storageContent;
 
             $this.html(content);
         })
@@ -102,23 +122,16 @@ $(function () {
             Storage.set(scope, content);
         });
 
-    // Local Storage
-    if (Storage.get('font') === null) {
-        //Font
-        Storage.set('font', 'source-serif-pro');
-    } else if (Storage.get('colors') === null) {
-        //Contrast
-        Storage.set('colors', JSON.stringify({
-            'bg': 'white',
-            'text': 'black'
-        }));
-    } else {
-        //Font
-        $contentEditable.css('fontFamily', Storage.get('font'));
-        //Contrast
-        var color = JSON.parse(Storage.get('colors'));
-        body.style.backgroundColor = color.bg;
-        body.style.color = color.text;
+
+    // if user has settings, apply
+    var userFont = Storage.get('font');
+    var userColor = Storage.get('color');
+
+    if (userFont !== 'null') {
+        toggleFonts(null, userFont);
+    }
+    if (userColor !== 'null') {
+        toggleColors(null, userColor);
     }
 
 });
