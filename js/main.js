@@ -14,6 +14,11 @@ $(function () {
     var $btnToggleFonts = $('.js-toggle-fonts');
     var $btnDownload = $('.js-download-content');
 
+    var htmlEntities = function (str) {
+        //replaces certain special characters (<, >, & and ")
+        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+    };
+
     var Storage = {
         get: function (val, cb) {
             var val = win.localStorage.getItem(val);
@@ -24,11 +29,6 @@ $(function () {
             win.localStorage.setItem(key, val);
             if (cb) cb();
         }
-    };
-
-    var htmlEntities = function (str) {
-        //replaces certain special characters (<, >, & and ")
-        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
     };
 
     var toggleColors = function () {
