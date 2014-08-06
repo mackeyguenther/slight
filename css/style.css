@@ -43,10 +43,33 @@
  * Content
 **/
 
+    body {
+    }
+
+    /* fonts */
+    body,
+    body[data-font="serif"]{
+        font-family: source-serif-pro, serif;
+    }
+    body[data-font="sans-serif"]{
+        font-family: source-sans-pro, serif;
+    }
+
+    /* colors */
+    body,
+    body[data-color="lighter"]{
+        background-color: #fff;
+        color: #000;
+    }
+    body[data-color="darker"]{
+        background-color: #000;
+        color: #fff;
+    }
+
+
     #header {
         margin: 40px 0 25px 0;
         font-size: 22px;
-        font-family: source-serif-pro, serif;
         font-weight: 300;
         text-align: center;
         -webkit-transition: all 300ms ease-in-out;
@@ -62,7 +85,6 @@
         font-size: 18px;
         line-height: 30px;
         font-weight: 300;
-        font-family: source-serif-pro, serif;
         text-align: left;
         text-indent: 50px;
         -webkit-transition: all 300ms ease-in-out;
