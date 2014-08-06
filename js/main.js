@@ -74,8 +74,8 @@ $(function () {
      * @var str string writen from the page
      * @var type allow programmer to specify more than one type of enhancement
      * to diferent types of text like: title, body,...
-     * @return the new string. 
-     */   
+     * @return the new string.
+     */
     var codeEnhancement = function(str, type) {
         switch(type){
             // you can add new types here...
@@ -104,7 +104,7 @@ $(function () {
             var $this = $(el);
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
-            var content = storageContent == 'null' ? defaultTexts[scope] : storageContent;
+            var content = (storageContent != null && storageContent != "null") ? storageContent : defaultTexts[scope];
 
             $this.html(content);
         })
