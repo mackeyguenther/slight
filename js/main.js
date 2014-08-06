@@ -69,14 +69,30 @@ $(function () {
         });
     };
 
+    /*
+     * This function change some of the code from the block's of text.
+     * @var str string writen from the page
+     * @var type allow programmer to specify more than one type of enhancement
+     * to diferent types of text like: title, body,...
+     * @return the new string. 
+     */   
+    var codeEnhancement = function(str, type) {
+        switch(type){
+            // you can add new types here...
+            default:
+                return String(str).replace(/<div>/g, '<br />').replace(/<\/div>/g, '');
+            break;
+        }
+    }
+
 
     $btnToggleContrast.on('click', toggleColors);
 
     $btnToggleFonts.on('click', toggleFonts);
 
     $btnDownload.on('click', function () {
-        var headerContent = Storage.get('headerContent');
-        var bodyContent = Storage.get('bodyContent');
+        var headerContent = codeEnhancement(Storage.get('headerContent'), "title");
+        var bodyContent = codeEnhancement(Storage.get('bodyContent'), "body");
         var blob = new Blob([headerContent + '\n' + bodyContent], {
             type: "text/plain;charset=utf-8"
         });
