@@ -104,7 +104,14 @@ $(function () {
             var $this = $(el);
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
-            var content = (storageContent != null && storageContent != "null") ? storageContent : defaultTexts[scope];
+            var content;
+            if (storageContent != null && storageContent != "null") {
+                content = storageContent;
+            }
+            else {
+                Storage.set(scope, defaultTexts[scope]);
+                content = defaultTexts[scope];
+            }
 
             $this.html(content);
         })
