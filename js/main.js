@@ -105,7 +105,7 @@ $(function () {
             var scope = $this.attr('data-scope');
             var storageContent = Storage.get(scope);
             var content;
-            if (storageContent != null && storageContent != "null" && !empty(storageContent)) {
+            if (storageContent != null && storageContent != "null") {
                 content = storageContent;
             }
             else {
