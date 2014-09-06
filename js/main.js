@@ -80,7 +80,7 @@ $(function () {
         switch(type){
             // you can add new types here...
             default:
-                return String(str).replace(/<div>/g, '<br />').replace(/<\/div>/g, '');
+                return String(str).replace(/<div>/g, '\n').replace(/<\/div>/g, '');
             break;
         }
     }
@@ -93,7 +93,7 @@ $(function () {
     $btnDownload.on('click', function () {
         var headerContent = codeEnhancement(Storage.get('headerContent'), "title");
         var bodyContent = codeEnhancement(Storage.get('bodyContent'), "body");
-        var blob = new Blob([headerContent + '\n' + bodyContent], {
+        var blob = new Blob([headerContent + '\n \n' + bodyContent], {
             type: "text/plain;charset=utf-8"
         });
         saveAs(blob, "slight.txt");
