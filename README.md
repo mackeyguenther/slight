@@ -1,6 +1,4 @@
 #Slight
-[![Gitter chat](https://badges.gitter.im/pixelmack/slight.png)](https://gitter.im/pixelmack/slight)
-
 Slight's an in-browser document editor. It saves content using local storage, so it can be recalled the next time Slight is opened. It's got a minimal interface, so you can just focus on writing.
 
 Check it out at: [pixelmack.github.io/slight](http://pixelmack.github.io/slight)
