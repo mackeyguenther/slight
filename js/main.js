@@ -13,6 +13,7 @@ $(function () {
     var $btnToggleContrast = $('.js-toggle-contrast');
     var $btnToggleFonts = $('.js-toggle-fonts');
     var $btnDownload = $('.js-download-content');
+    var $btnOpenGithub = $('.js-open-github');
 
     var htmlEntities = function (str) {
         //replaces certain special characters (<, >, & and ")
@@ -99,6 +100,10 @@ $(function () {
         saveAs(blob, "slight.txt");
     });
 
+    $btnOpenGithub.on('click', function () {
+        window.open('https://github.com/pixelmack/slight','_blank');
+    });
+    
     $contentEditable
         .each(function (i, el) {
             var $this = $(el);
