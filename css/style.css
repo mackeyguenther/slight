@@ -150,8 +150,8 @@
     .action-btn--toggle-contrast { left: 56px; }
     .action-btn--toggle-contrast:before { content: "b"; }
 
-    .action-btn--github { left: 136px; }
-    .action-btn--github:before { content: "g"; }
+    .action-btn--open-github { left: 136px; }
+    .action-btn--open-github:before { content: "g"; }
 
 
 
