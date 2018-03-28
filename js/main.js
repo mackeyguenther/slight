@@ -15,16 +15,11 @@ $(function () {
     var $btnDownload = $('.js-download-content');
     var $btnOpenGithub = $('.js-open-github');
 
-    var htmlEntities = function (str) {
-        //replaces certain special characters (<, >, & and ")
-        return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
-    };
-
     var Storage = {
         get: function (val, cb) {
             var val = win.localStorage.getItem(val);
             if (cb) cb();
-            return htmlEntities(val);
+            return val;
         },
         set: function (key, val, cb) {
             win.localStorage.setItem(key, val);
